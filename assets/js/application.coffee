@@ -16,4 +16,6 @@ require.config
     }
 
 require ['jquery', 'underscore', 'backbone', 'marionette'], ($, _, Backbone, Marionette) ->
-  console.log Marionette
+
+  window.App = App = new Marionette.Application()
+  App.start()
