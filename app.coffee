@@ -7,3 +7,5 @@ module.exports =
 
   stylus:
     use: [axis(), autoprefixer(), rupture()]
+
+  extensions: [require('js-pipeline')(files: "assets/js/**/*.coffee", out: 'js/build.js', minify: true)]

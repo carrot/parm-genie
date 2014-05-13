@@ -9,6 +9,7 @@
     "autoprefixer-stylus": "0.0.4",
     "axis-css": "0.2.x",
     "rupture": "0.0.3",
-    "roots": "^3.0.0-rc.6"
+    "roots": "^3.0.0-rc.6",
+    "js-pipeline": "0.0.3"
   }
 }
