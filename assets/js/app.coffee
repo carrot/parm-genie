@@ -1,3 +1,3 @@
-define ['marionette'], (Marionette) ->
-  
+define ['marionette'], (Marionette, Routes) ->
+
   new Marionette.Application()

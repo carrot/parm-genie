@@ -10,6 +10,7 @@
     "axis-css": "0.2.x",
     "rupture": "0.0.3",
     "roots": "^3.0.0-rc.6",
-    "js-pipeline": "0.0.3"
+    "js-pipeline": "0.0.3",
+    "client-templates": "0.0.6"
   }
 }
