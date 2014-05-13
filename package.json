@@ -8,6 +8,7 @@
     "coffee-script": "1.7.x",
     "autoprefixer-stylus": "0.0.4",
     "axis-css": "0.2.x",
-    "rupture": "0.0.3"
+    "rupture": "0.0.3",
+    "roots": "^3.0.0-rc.6"
   }
 }
