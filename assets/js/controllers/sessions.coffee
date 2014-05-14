@@ -1,6 +1,4 @@
 define [], ->
 
-  class SessionsController
-
-    new: ->
-      console.log "New User"
+  new: ->
+    console.log "New user"
