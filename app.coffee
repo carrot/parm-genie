@@ -1,6 +1,8 @@
 axis         = require 'axis-css'
 autoprefixer = require 'autoprefixer-stylus'
 rupture      = require 'rupture'
+precompile   = require 'client-templates'
+pipeline     = require 'js-pipeline'
 
 module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore']
@@ -8,4 +10,6 @@ module.exports =
   stylus:
     use: [axis(), autoprefixer(), rupture()]
 
-  extensions: [require('js-pipeline')(files: "assets/js/**/*.coffee", out: 'js/build.js', minify: true)]
+  extensions: [
+    precompile(base: 'views/templates', out: 'js/templates.js')
+  ]
