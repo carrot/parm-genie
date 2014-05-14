@@ -17,4 +17,4 @@ require.config
 
 require ['jquery', 'underscore', 'backbone', 'marionette', 'app'], ($, _, Backbone, Marionette, App) ->
 
-  App.start()
+  $ -> App.start()
