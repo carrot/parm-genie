@@ -3,5 +3,8 @@ define [], ->
   "sessions":
     "in": "new"
 
-  "base":
+  "pages":
     "": "home"
+
+  "comments":
+    "comments/new": "new"

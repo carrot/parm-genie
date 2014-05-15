@@ -1,6 +1,6 @@
-define ['backbone'], (Backbone) ->
+define ['parse'], (Parse) ->
 
-  class Comment extends Backbone.Model
+  Parse.Object.extend 'Comment',
 
-    init: ->
-      console.log "Comment initialized."
+    defaults:
+      content: "test"

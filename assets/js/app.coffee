@@ -1,16 +1,32 @@
-define ['jquery', 'underscore', 'routes'], ($, _, Routes) ->
+define [
 
+  'backbone',
+  'marionette',
+  'parse',
+  './routes',
+  './config'
+
+], (Backbone, Marionette, Parse, Routes, Config) ->
+
+  # instantiate Marionette.Application
   App = new Marionette.Application()
+  App.Config = Config
+  App.Routes = Routes
 
+  # initialize Parse
+  App.on 'initialize:before', ->
+    Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key
+
+  # grab all controllers specified in `routes.coffee`
+  # and instantiate routers for each. finally,
+  # start Backbone.history.
   App.addInitializer ->
-
-    require _.map(_.keys(Routes), (name) -> "controllers/#{name}"), ->
-
+    require _.map(_.keys(App.Routes), (name) -> "controllers/#{name}"), ->
       for key, controller of arguments
         new Marionette.AppRouter
           controller: arguments[key]
-          appRoutes: _.values(Routes)[key]
-
+          appRoutes: _.values(App.Routes)[key]
       Backbone.history.start(pushState: true) if Backbone.history
-      
-  return App
+
+  # return app instance
+  App
