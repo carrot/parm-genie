@@ -1,7 +1,8 @@
 define [], ->
 
   "sessions":
-    "in": "new"
+    "auth/fb": "facebook"
+    "out": "destroy"
 
   "pages":
     "": "home"

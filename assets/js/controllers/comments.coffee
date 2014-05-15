@@ -1,5 +1,4 @@
-define ['models/comment'], (Comment) ->
+define ['app', 'models/comment'], (App, Comment) ->
 
   new: ->
     @comment = new Comment()
-    console.log "New comment"

@@ -1,8 +1,8 @@
-define ['backbone', 'app'], (Backbone, App) ->
+define ['app'], (App) ->
 
   class PagesHomeView extends Backbone.View
 
-    template: App.Templates['/pages/home']
+    template: App.Template '/pages/home'
     el: 'body'
 
     render: ->

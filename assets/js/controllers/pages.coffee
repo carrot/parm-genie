@@ -1,4 +1,11 @@
-define ['views/pages/home'], (PagesHomeView) ->
+define [
+  'app',
+  'views/pages/home',
+  'views/pages/dashboard'
+], (App, PagesHomeView, PagesDashboardView) ->
 
   home: ->
-    (new PagesHomeView()).render()
+    if App.User()
+      (new PagesDashboardView()).render()
+    else
+      (new PagesHomeView()).render()

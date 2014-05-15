@@ -1,4 +1,4 @@
-define ['parse'], (Parse) ->
+define ['app'], (App) ->
 
   Parse.Object.extend 'Comment',
 

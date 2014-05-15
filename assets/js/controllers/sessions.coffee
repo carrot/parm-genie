@@ -1,7 +1,15 @@
-define [], ->
+define ['app', 'parse', 'controllers/pages'], (App, Parse, PagesController) ->
 
-  new: ->
-    console.log "new"
+  destroy: ->
+    if App.User()
+      Parse.User.logOut()
 
-  create: ->
-    console.log "New user"
+    App.Go 'pages', 'home'
+
+  facebook: ->
+    if !App.User()
+      Parse.FacebookUtils.logIn null,
+        success: ->
+          App.Go 'pages', 'home'
+    else
+      App.Go 'pages', 'home'
