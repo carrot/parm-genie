@@ -10,5 +10,5 @@ module.exports =
     use: [axis(), autoprefixer(), rupture()]
 
   extensions: [
-    precompile(base: 'views/templates', out: 'js/templates.js')
+    precompile(base: './templates', out: 'js/templates.js')
   ]

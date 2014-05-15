@@ -1,4 +1,4 @@
-define [], ->
+define ['views/pages/home'], (PagesHomeView) ->
 
   home: ->
-    console.log "Test"
+    (new PagesHomeView()).render()

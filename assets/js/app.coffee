@@ -4,14 +4,16 @@ define [
   'marionette',
   'parse',
   './routes',
-  './config'
+  './config',
+  './templates'
 
-], (Backbone, Marionette, Parse, Routes, Config) ->
+], (Backbone, Marionette, Parse, Routes, Config, Templates) ->
 
   # instantiate Marionette.Application
   App = new Marionette.Application()
   App.Config = Config
   App.Routes = Routes
+  App.Templates = Templates
 
   # initialize Parse
   App.on 'initialize:before', ->
