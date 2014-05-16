@@ -1,5 +1,10 @@
-define ['views/photos/_photo'], (PhotoView) ->
+define ['app', 'views/photos/photo'], (App, PhotoView) ->
 
-  class PhotosIndexView extends Marionette.CollectionView
+  class PhotoIndexView extends Marionette.CompositeView
 
+    template: App.Template '/photos/index'
     itemView: PhotoView
+    itemViewContainer: '.photos'
+
+    onRender: ->
+      console.log this.itemView

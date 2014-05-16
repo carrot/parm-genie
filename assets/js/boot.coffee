@@ -16,6 +16,9 @@ require.config
       exports: 'Parse'
     facebook:
       exports: 'FB'
+    syphon:
+      deps: ['backbone']
+      exports: 'Syphon'
 
 require [
 

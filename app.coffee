@@ -5,6 +5,7 @@ precompile   = require 'client-templates'
 
 module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore']
+  watcher_ignores: ['node_modules']
 
   stylus:
     use: [axis(), autoprefixer(), rupture()]

@@ -2,21 +2,35 @@ define [
 
   "app",
   "models/photo",
-  "views/photos/index"
+  "views/photos/index",
+  "views/photos/new",
+  "vendor/backbone.syphon.min"
 
-], (App, Photo, PhotosIndexView) ->
+], (App, Photo, PhotosIndexView, PhotosNewView, Syphon) ->
 
   index: ->
 
-    @collection = Parse.Collection.extend
-      model: Photo
-      query: new Parse.Query Photo
-
-    @photos = new @collection
-    @photos.fetch()
-
-    App.main.show new PhotosIndexView(collection: @collection)
+    @query = new Parse.Query Photo
+    @query.collection().fetch
+      success: (collection) ->
+        App.main.show new PhotosIndexView(collection: collection)
 
   new: ->
+    App.main.show new PhotosNewView()
 
-  create: ->
+  create: (files) ->
+    if files.length
+      for file in files
+        # make sure the file is an image FIXME: move to model
+        if /^image/.test file.type
+          # create the file
+          @file = (new Parse.File file.name, file)
+          @file.save().then ->
+            @photo = new Photo()
+            @photo.set 'photoSrc', @file
+            @photo.save().then ->
+              App.Go 'photos', 'index'
+        else
+          alert 'The file needs to be an image'
+    else
+      alert 'You need to select a file'
