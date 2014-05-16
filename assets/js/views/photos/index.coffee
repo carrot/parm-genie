@@ -5,6 +5,3 @@ define ['app', 'views/photos/photo'], (App, PhotoView) ->
     template: App.Template '/photos/index'
     itemView: PhotoView
     itemViewContainer: '.photos'
-
-    onRender: ->
-      console.log this.itemView

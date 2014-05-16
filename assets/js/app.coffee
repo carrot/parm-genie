@@ -29,9 +29,8 @@ define [
     # initialize FB and Parse.FacebookUtils
     if App.Config.facebook
 
-      if !FB
-        Parse.FacebookUtils.init
-          appId: App.Config.facebook.application_id
+      Parse.FacebookUtils.init
+        appId: App.Config.facebook.application_id
 
     # add user to main object
     App.User = ->

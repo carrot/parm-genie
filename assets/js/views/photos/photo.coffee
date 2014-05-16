@@ -5,3 +5,6 @@ define ['app'], (App) ->
     template: App.Template '/photos/photo'
     tagName: 'article'
     className: 'photo'
+
+    serializeData: ->
+      return this.model.toJSON()

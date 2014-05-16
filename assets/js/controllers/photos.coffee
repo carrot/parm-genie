@@ -24,11 +24,13 @@ define [
         if /^image/.test file.type
           # create the file
           @file = (new Parse.File file.name, file)
-          @file.save().then ->
-            @photo = new Photo()
-            @photo.set 'photoSrc', @file
-            @photo.save().then ->
-              App.Go 'photos', 'index'
+          @file.save
+            success: (file) ->
+              @photo = new Photo()
+              @photo.set 'photoSrc', file
+              @photo.set 'user', App.User()
+              @photo.save().then ->
+                App.Go 'photos', 'index'
         else
           alert 'The file needs to be an image'
     else
