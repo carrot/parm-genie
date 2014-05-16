@@ -7,5 +7,7 @@ define [], ->
   "pages":
     "": "home"
 
-  "comments":
-    "comments/new": "new"
+  "photos":
+    "gallery": "index"
+    "photos/new": "new"
+    "photos": "create"

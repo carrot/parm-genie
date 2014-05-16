@@ -1,6 +1,6 @@
-if current_user()
-  h1 Dashboard for #{current_user().id}
-else
-  h1 Dashboard
-
-a(href=route('sessions', 'destroy')) Log Out
+nav
+  ul
+    li
+      a(href=route('photos', 'new')) Upload UGC
+    li
+      a(href=route('photos', 'index')) Show Gallery
