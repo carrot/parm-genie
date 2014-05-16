@@ -3,8 +3,7 @@ define [
   "app",
   "models/photo",
   "views/photos/index",
-  "views/photos/new",
-  "vendor/backbone.syphon.min"
+  "views/photos/new"
 
 ], (App, Photo, PhotosIndexView, PhotosNewView, Syphon) ->
 
