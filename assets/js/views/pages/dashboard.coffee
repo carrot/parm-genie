@@ -1,9 +1,11 @@
 define ['app'], (App) ->
 
-  class PagesDashboardView extends Backbone.View
+  class PagesDashboardView extends Marionette.ItemView
 
-    template: App.Template '/pages/dashboard'
-    el: 'body'
-    
-    render: ->
-      this.$el.html this.template
+    template: App.Template('/pages/dashboard')
+
+    onRender: ->
+      console.log 'rendered Dashboard'
+
+    onClose: ->
+      console.log 'closed Dashboard'

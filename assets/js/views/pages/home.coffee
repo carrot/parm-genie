@@ -1,9 +1,5 @@
 define ['app'], (App) ->
 
-  class PagesHomeView extends Backbone.View
+  class PagesHomeView extends Marionette.ItemView
 
-    template: App.Template '/pages/home'
-    el: 'body'
-
-    render: ->
-      this.$el.html this.template
+    template: App.Template('/pages/home')

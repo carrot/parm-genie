@@ -7,4 +7,7 @@ define [], ->
   facebook:
     application_id: "1434071636849929"
 
-  foo: 'bar'
+  regions:
+    header: "#header"
+    main: "main"
+    footer: "#footer"

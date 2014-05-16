@@ -8,7 +8,7 @@ define [
   './config',
   './templates'
 
-], (Backbone, Marionette, Parse, FB, Routes, Config, Templates) ->
+], (Backbone, Marionette, Parse, FB, Routes, Config, Templates, Layout) ->
 
   # instantiate Marionette.Application
   App = new Marionette.Application()
@@ -17,24 +17,22 @@ define [
   App.Templates = Templates
   App.Routers = {}
 
-  # initialize Parse
-  Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key
+  # initialize regions in configuration
+  App.addRegions App.Config.regions if App.Config.regions
 
-  # helper function
-  App.User = Parse.User.current
+  # initialize Parse
+  Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key if App.Config.parse
 
   # if facebook app ID is in configuration,
   # initialize FB and Parse.FacebookUtils
   if App.Config.facebook
 
-    FB.init
-      appId: App.Config.facebook.application_id
-
     Parse.FacebookUtils.init
       appId: App.Config.facebook.application_id
-      status: true
-      cookie: true
-      xfbml: true
+
+  # add user to main object
+  App.User = ->
+    Parse.User.current()
 
   # function to grab a route by
   # its controller and action.
@@ -43,26 +41,20 @@ define [
     route = null
     _.each _.keys(routes), (key) ->
       route = key if routes[key] == action
-    "\##{route}" if route
+    "\#\/#{route}" if route
 
   # function to grab a template
   # with helper locals.
-  App.Template = (path, locals) ->
-    App.Templates[path] _.extend(
-      locals or {},
-      { config: App.Config },
-      { route: App.Route },
-      current_user: App.User
-    )
+  App.Template = (path) ->
+    (data) ->
+      App.Templates[path] _.extend data,
+        config: App.Config,
+        route: App.Route,
+        current_user: App.User
 
   # a redirect function
   App.Go = (controller, action) ->
-
-    # run the controller method
-    App.Routers[controller].options.controller[action](_.values(arguments).slice(2))
-
-    # pushState
-    Backbone.history.navigate App.Route(controller, action)
+    App.Routers[controller].navigate App.Route(controller, action), { trigger: true }
 
   # grab all controllers specified in `routes.coffee`
   # and instantiate routers for each. finally,
