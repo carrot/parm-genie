@@ -1,17 +1,21 @@
 define [
 
   "app",
-  "models/photo"
+  "models/photo",
+  "views/photos/index"
 
-], (App, Photo) ->
+], (App, Photo, PhotosIndexView) ->
 
   index: ->
-    @photos = Parse.Collection.extend model: Photo
-    @query = new Parse.Query @photos
-    @query.descending "createdAt"
-    @query.find
-      success: (results) ->
-        console.log results
+
+    @collection = Parse.Collection.extend
+      model: Photo
+      query: new Parse.Query Photo
+
+    @photos = new @collection
+    @photos.fetch()
+
+    App.main.show new PhotosIndexView(collection: @collection)
 
   new: ->
 
