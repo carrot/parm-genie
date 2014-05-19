@@ -13,13 +13,60 @@ textarea
   line-height: line-height
   text-shadow: blue
 
+body
+  padding: margin * 2
+
 a
   color: blue
   text-decoration: none
 
-#header
-  background: silver
-  padding: margin * 2
+h1
+  font-size: 20px
+  font-weight: 600
 
 main
-  padding: margin * 5
+  width: 420px
+  margin: 0 auto
+  border: 1px solid gray
+  border-radius: 5px
+  box-shadow: 0 0 (margin / 2) rgba(0, 0, 0, 0.1)
+
+#header
+  padding: margin * 2
+  background: silver
+  border-top-left-radius: 5px
+  border-top-right-radius: 5px
+  text-align: center
+
+#footer
+  border-bottom-left-radius: 5px
+  border-bottom-right-radius: 5px
+  padding: margin
+  text-align: center
+  border-top: 1px solid gray
+
+#container
+  padding: margin * 2
+  background: white
+
+.breadcrumb
+  border-bottom: 1px solid gray
+  padding-bottom: margin * .5
+  margin-bottom: margin
+  font-weight: 600
+
+.photo
+  margin: margin * 2 0
+  > figure
+    width: 100%
+    margin: 0
+    > img
+      display: block
+      width: 100%
+  > footer
+    margin: margin 0
+    position: relative
+    > span
+      position: absolute
+      right: 0
+      top: 0

@@ -8,4 +8,4 @@ define ['app'], (App) ->
 
     save: (e) ->
       e.preventDefault()
-      (require 'controllers/photos').create @$('input')[0].files
+      App.Controllers.photos.create @$('input')[0].files

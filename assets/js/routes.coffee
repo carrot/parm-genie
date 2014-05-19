@@ -10,3 +10,6 @@ define [], ->
   "photos":
     "gallery": "index"
     "photos/new": "new"
+
+  "ratings":
+    "ratings": "create"

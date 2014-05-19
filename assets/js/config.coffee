@@ -9,5 +9,5 @@ define [], ->
 
   regions:
     header: "#header"
-    main: "main"
+    main: "#container"
     footer: "#footer"

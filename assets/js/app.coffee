@@ -18,6 +18,7 @@ define [
     App.Routes = Routes
     App.Templates = Templates
     App.Routers = {}
+    App.Controllers = {}
 
     # initialize regions in configuration
     App.addRegions App.Config.regions if App.Config.regions
@@ -49,6 +50,7 @@ define [
     # with helper locals.
     App.Template = (path) ->
       (data) ->
+        console.log data
         App.Templates[path] _.extend data,
           config: App.Config,
           route: App.Route,
@@ -64,7 +66,9 @@ define [
     App.addInitializer ->
       require _.map(_.keys(App.Routes), (name) -> "controllers/#{name}"), ->
         for key, controller of arguments
-          App.Routers[_.keys(App.Routes)[key]] = new Marionette.AppRouter
+          name = _.keys(App.Routes)[key]
+          App.Controllers[name] = arguments[key]
+          App.Routers[name] = new Marionette.AppRouter
             controller: arguments[key]
             appRoutes: _.values(App.Routes)[key]
         Backbone.history.start() if Backbone.history

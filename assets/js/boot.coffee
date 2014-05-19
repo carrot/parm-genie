@@ -27,4 +27,5 @@ require [
 
 ], ($, App) ->
 
-  $ -> App.start()
+  $ ->
+    App.start()
