@@ -23,8 +23,22 @@ define [
     # initialize regions in configuration
     App.addRegions App.Config.regions if App.Config.regions
 
-    # initialize Parse
-    Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key if App.Config.parse
+    # start up Parse
+    if App.Config.parse
+      # initialize parse
+      Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key
+
+      Parse.Object.prototype.toNestedJSON = ->
+        json = @toJSON()
+        for argument in arguments
+          relation = @get argument
+          if relation instanceof Array
+            json[argument] = []
+            for item in relation
+              json[argument].push item.toJSON()
+          else if typeof relation == 'object'
+            json[argument] = relation.toJSON()
+        return json
 
     # if facebook app ID is in configuration,
     # initialize FB and Parse.FacebookUtils
@@ -50,7 +64,6 @@ define [
     # with helper locals.
     App.Template = (path) ->
       (data) ->
-        console.log data
         App.Templates[path] _.extend data,
           config: App.Config,
           route: App.Route,
@@ -67,9 +80,10 @@ define [
       require _.map(_.keys(App.Routes), (name) -> "controllers/#{name}"), ->
         for key, controller of arguments
           name = _.keys(App.Routes)[key]
-          App.Controllers[name] = arguments[key]
+          controller = arguments[key]
+          App.Controllers[name] = controller
           App.Routers[name] = new Marionette.AppRouter
-            controller: arguments[key]
+            controller: controller
             appRoutes: _.values(App.Routes)[key]
         Backbone.history.start() if Backbone.history
 

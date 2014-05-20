@@ -10,7 +10,7 @@ define [
   index: ->
 
     @query = new Parse.Query Photo
-    @query.include('user').collection().fetch
+    @query.include('user', 'ratings').collection().fetch
       success: (collection) ->
         App.main.show new PhotosIndexView(collection: collection)
 
@@ -27,8 +27,9 @@ define [
           @file.save
             success: (file) ->
               @photo = new Photo()
-              @photo.set 'src', file
-              @photo.set 'user', App.User()
+              @photo.set
+                 src: file
+                 user: App.User()
               @photo.save().then ->
                 App.Go 'photos', 'index'
         else
