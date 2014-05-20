@@ -11,7 +11,13 @@ define ['app'], (App) ->
 
     rate: (e) ->
       e.preventDefault()
-      App.Controllers.ratings.create @$('[name="id"]').val(), @$('[name="rating"]').val()
+      App.Controllers.ratings.create @model, @$('[name="id"]').val(), @$('[name="rating"]').val()
+      @model.save success: @render
 
     serializeData: ->
       @model.toNestedJSON 'user', 'ratings'
+
+    templateHelpers: ->
+      averageRating: => @model.getAverageRating()
+      userHasRated: =>
+        _.contains(_.map(@model.get('ratings'), (rating) -> rating.get('user').id), App.User().id)

@@ -3,9 +3,11 @@ figure
 footer
   a(href=user.url, target="_blank")= user.name
   span
-    form
-      input(type="hidden", name="id", value=objectId)
-      select(name="rating")
-        each i in [1, 2, 3, 4, 5]
-          option(value=i)= i
-      button(type="submit") Rate
+    label #{Math.round(averageRating())}/5 Stars
+    if !userHasRated()
+      form
+        input(type="hidden", name="id", value=objectId)
+        select(name="rating")
+          each i in [1, 2, 3, 4, 5]
+            option(value=i)= i
+        button(type="submit") Rate

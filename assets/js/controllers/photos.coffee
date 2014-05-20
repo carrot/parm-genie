@@ -10,8 +10,8 @@ define [
   index: ->
 
     @query = new Parse.Query Photo
-    @query.include('user', 'ratings').collection().fetch
-      success: (collection) ->
+    @query.include('user', 'ratings').collection().fetch()
+      .then (collection) ->
         App.main.show new PhotosIndexView(collection: collection)
 
   new: ->
