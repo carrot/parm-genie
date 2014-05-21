@@ -24,7 +24,7 @@ define [
     App.addRegions App.Config.regions if App.Config.regions
 
     # start up Parse
-    Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key if App.Config.parse      
+    Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key if App.Config.parse
 
     # if facebook app ID is in configuration,
     # initialize FB and Parse.FacebookUtils
@@ -39,7 +39,7 @@ define [
 
     # function to grab a route by
     # its controller and action.
-    App.Route = (controller, action) ->
+    App.Route = (controller, action, attributes = {}) ->
       routes = App.Routes[controller]
       route = null
       _.each _.keys(routes), (key) ->

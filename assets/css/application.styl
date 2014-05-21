@@ -62,12 +62,15 @@ main
   margin-bottom: margin
   font-weight: 600
 
-.photo
   margin: margin * 2 0
+
+.photo
   > figure
     width: 100%
     margin: 0
-    > img
+    a
+      display: block
+    img
       display: block
       width: 100%
   > header
@@ -82,14 +85,14 @@ main
         left: 0
         text-align: left
   > div
+    &.comments,
+    &.ratings
+      padding: margin 0
     &.comments
       border-top: 1px solid gray
-      padding: margin 0
+      li
+        margin-bottom: margin
       textarea
         border: 1px solid gray
         width: 100%
         height: 100px
-
-.comments
-  li
-    margin-bottom: margin
