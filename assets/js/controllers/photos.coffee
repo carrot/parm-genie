@@ -11,7 +11,7 @@ define [
   index: ->
 
     @query = new Parse.Query Photo
-    @query.include('user', 'ratings', 'comments').collection().fetch()
+    @query.include('user', 'ratings', 'comments').descending('createdAt').collection().fetch()
       .then (collection) ->
         App.main.show new PhotosIndexView(collection: collection)
 
