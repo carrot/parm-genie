@@ -1,7 +1,7 @@
 parm-genie
 ==========
 
-This is an demonstrative app built using the PARM ([PArse](http://parse.com), [Roots](https://github.com/jenius/roots), [Marionette](https://github.com/marionettejs/backbone.marionette)) stack.  
+This is an demonstrative app built using the PARM ([PArse](http://parse.com), [Roots](https://github.com/jenius/roots), [Marionette](https://github.com/marionettejs/backbone.marionette)) stack and based on [this wireframe](wireframes.sketch).
 
 It demonstrates an experimental convention for developing PARM apps heavily inspired by [rails](https://github.com/rails/rails).
 
