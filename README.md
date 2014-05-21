@@ -1,6 +1,8 @@
 parm-genie
 ==========
 
+> Discuss and provide feedback on the pattern ([here](https://github.com/carrot/parm-genie/issues/3)) and Parse ([here](https://github.com/carrot/parm-genie/issues/4)). (please!)
+
 This is an demonstrative app [(live)](http://parm.bycarrot.com) built using the PARM ([PArse](http://parse.com), [Roots](https://github.com/jenius/roots), [Marionette](https://github.com/marionettejs/backbone.marionette)) stack and based on [this wireframe](wireframes.sketch).
 
 It demonstrates an experimental convention for developing PARM apps heavily inspired by [rails](https://github.com/rails/rails).
