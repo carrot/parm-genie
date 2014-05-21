@@ -1,7 +1,7 @@
 parm-genie
 ==========
 
-This is an demonstrative app [(live)](http://parm.bycarrot.com) built using the PARM ([PArse](http://parse.com), [Roots](https://github.com/jenius/roots), [Marionette](https://github.com/marionettejs/backbone.marionette)) stack and based on [this wireframe](wireframes.sketch). 
+This is an demonstrative app [(live)](http://parm.bycarrot.com) built using the PARM ([PArse](http://parse.com), [Roots](https://github.com/jenius/roots), [Marionette](https://github.com/marionettejs/backbone.marionette)) stack and based on [this wireframe](wireframes.sketch).
 
 It demonstrates an experimental convention for developing PARM apps heavily inspired by [rails](https://github.com/rails/rails).
 
@@ -55,7 +55,7 @@ It demonstrates an experimental convention for developing PARM apps heavily insp
   - **App.Route(controller, action)** to grab a route via its controller and action.
   - **App.Go()** to redirect to an action.
 
-- Rails-inspired nomenclature and folder hierarchy.
+- The app is structured with rails-inspired nomenclature and folder hierarchy.
 
   ```
   ├── controllers
