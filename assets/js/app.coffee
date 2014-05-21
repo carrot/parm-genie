@@ -24,21 +24,7 @@ define [
     App.addRegions App.Config.regions if App.Config.regions
 
     # start up Parse
-    if App.Config.parse
-      # initialize parse
-      Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key
-
-      Parse.Object.prototype.toNestedJSON = ->
-        json = @toJSON()
-        for argument in arguments
-          relation = @get argument
-          if relation instanceof Array
-            json[argument] = []
-            for item in relation
-              json[argument].push item.toJSON()
-          else if typeof relation == 'object'
-            json[argument] = relation.toJSON()
-        return json
+    Parse.initialize App.Config.parse.application_id, App.Config.parse.javascript_key if App.Config.parse      
 
     # if facebook app ID is in configuration,
     # initialize FB and Parse.FacebookUtils

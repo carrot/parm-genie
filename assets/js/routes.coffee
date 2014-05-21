@@ -13,3 +13,6 @@ define [], ->
 
   "ratings":
     "ratings": "create"
+
+  "comments":
+    "comments": "create"

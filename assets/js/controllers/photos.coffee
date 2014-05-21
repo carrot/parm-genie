@@ -2,15 +2,16 @@ define [
 
   "app",
   "models/photo",
+  "models/comment",
   "views/photos/index",
   "views/photos/new"
 
-], (App, Photo, PhotosIndexView, PhotosNewView, Syphon) ->
+], (App, Photo, Comment, PhotosIndexView, PhotosNewView, Syphon) ->
 
   index: ->
 
     @query = new Parse.Query Photo
-    @query.include('user', 'ratings').collection().fetch()
+    @query.include('user', 'ratings', 'comments').collection().fetch()
       .then (collection) ->
         App.main.show new PhotosIndexView(collection: collection)
 

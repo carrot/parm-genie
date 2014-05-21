@@ -1,4 +1,4 @@
-define ['app'], (App) ->
+define ['app', 'views/comments/comments'], (App, CommentsView) ->
 
   class PhotoView extends Marionette.ItemView
 
@@ -6,18 +6,22 @@ define ['app'], (App) ->
     tagName: 'article'
     className: 'photo'
 
+    render: ->
+      super()
+      commentsView = new CommentsView(parent: @model)
+      commentsView.setElement(@$el.find('.comments')).render()
+
     events:
-      "submit form": "rate"
+      "submit form.rating": "rating"
 
-    rate: (e) ->
+    rating: (e) ->
       e.preventDefault()
-      App.Controllers.ratings.create @model, @$('[name="id"]').val(), @$('[name="rating"]').val()
-      @model.save success: @render
-
-    serializeData: ->
-      @model.toNestedJSON 'user', 'ratings'
+      App.Controllers.ratings.create(@model, @$('[name="rating"]').val())
+        .then @render
 
     templateHelpers: ->
-      averageRating: => @model.getAverageRating()
+
+      user: => @model.get('user').toJSON()
+      rating: => @model.getAverageRating()
       userHasRated: =>
         _.contains(_.map(@model.get('ratings'), (rating) -> rating.get('user').id), App.User().id)

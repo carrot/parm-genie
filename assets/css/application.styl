@@ -20,9 +20,16 @@ a
   color: blue
   text-decoration: none
 
+h1,
+h2
+  font-weight: 600
+  margin-bottom: 12px
+
 h1
   font-size: 20px
-  font-weight: 600
+
+h2
+  font-size: 15px
 
 main
   width: 420px
@@ -63,10 +70,26 @@ main
     > img
       display: block
       width: 100%
-  > footer
+  > header
     margin: margin 0
     position: relative
-    > span
-      position: absolute
-      right: 0
-      top: 0
+    text-align: right
+    > label
+      display: block
+      &:first-child
+        position: absolute
+        top: 0
+        left: 0
+        text-align: left
+  > div
+    &.comments
+      border-top: 1px solid gray
+      padding: margin 0
+      textarea
+        border: 1px solid gray
+        width: 100%
+        height: 100px
+
+.comments
+  li
+    margin-bottom: margin
